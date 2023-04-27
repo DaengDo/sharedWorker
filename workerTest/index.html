@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shared Worker Example</title>
+    <script>
+      const sharedWorker = new SharedWorker("./sharedWorker.js");
+
+      console.log(sharedWorker);
+
+      sharedWorker.port.start();
+
+      sharedWorker.port.postMessage("Hello from the main thread!");
+
+      sharedWorker.port.addEventListener("message", (event) => {
+        console.log(`Main thread received message: ${event.data}`);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Shared Worker Example</h1>
+  </body>
+</html>
